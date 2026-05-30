@@ -1,0 +1,260 @@
+{
+  "prod-03": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Leo",
+    "description": "Додайте хижої естетики до вашого гардероба!\nЕлегантний леопард — це принт, який ніколи не виходить із моди. Класичний крій робить цей комплект ідеальним як для особливих моментів, так і під повсякденний одяг.",
+    "image": "img/products/3/DSC_1379.webp",
+    "images": [
+      "img/products/3/DSC_1379.webp",
+      "img/products/3/DSC_1390.webp"
+    ]
+  },
+  "prod-04": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Set Sexy Beg",
+    "description": "Сміливий дизайн, що грає на контрастах! Цей комплект — ідеальне поєднання ніжного бежевого фатину та чітких чорних ліній, які створюють ефектний силует і підкреслюють кожну лінію вашого тіла.",
+    "image": "img/products/4/DSC_1009.webp",
+    "images": [
+      "img/products/4/DSC_1009.webp",
+      "img/products/4/DSC_1016.webp"
+    ]
+  },
+  "prod-05": {
+    "price": "1500",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Spring Violet",
+    "description": "Лаконічний комплект білизни у кольорі \"Spring Violet\"\nСтильний та енергійний комплект, що поєднує в собі спортивний шик та витонченість. Головна особливість — гра контрастів між насиченим лавандово-фіолетовим та глибоким темно-синім (або графітовим) кольорами.",
+    "image": "img/products/5/DSC_1035.webp",
+    "images": [
+      "img/products/5/DSC_1035.webp",
+      "img/products/5/DSC_1038.webp"
+    ]
+  },
+  "prod-06": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Black Flowers",
+    "description": "Цей комплект ідеально підійде для особливих випадків або для тих, хто полюбляє відчувати себе впевнено та жіночно щодня. Завдяки бежевій основі він виглядає дуже делікатно на шкірі.",
+    "image": "img/products/6/DSC_1070.webp",
+    "images": [
+      "img/products/6/DSC_1070.webp",
+      "img/products/6/DSC_1074.webp"
+    ]
+  },
+  "prod-07": {
+    "price": "1500",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Royal Blue",
+    "description": "Цей комплект спідньої білизни вражає своїм насиченим кольором та мінімалістичним, але дуже сучасним дизайном. Яскравий відтінок «королівський синій» (Royal Blue) додає образу особливої енергетики та вишуканості.",
+    "image": "img/products/7/DSC_1089.webp",
+    "images": [
+      "img/products/7/DSC_1089.webp",
+      "img/products/7/DSC_1090.webp"
+    ]
+  },
+  "prod-08": {
+    "price": "2200",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Joli",
+    "description": "Комплект Joli — це втілення ніжності та витонченої розкоші. Його дизайн натхненний класичною естетикою, де поєднуються пастельні відтінки та делікатне мереживо.",
+    "image": "img/products/8/DSC_1014.webp",
+    "images": [
+      "img/products/8/DSC_1014.webp",
+      "img/products/8/DSC_1050.webp"
+    ]
+  },
+  "prod-09": {
+    "price": "1500",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Spring Pink",
+    "description": "Цей комплект — справжній вибух кольору та літнього настрою. Сміливе поєднання соковитого коралового та свіжого оливкового відтінків створює унікальний та енергійний образ у стилі color-blocking.",
+    "image": "img/products/9/DSC_1023.webp",
+    "images": [
+      "img/products/9/DSC_1023.webp",
+      "img/products/9/DSC_1028.webp"
+    ]
+  },
+  "prod-10": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Silk Chocolate",
+    "description": "Цей комплект — втілення стриманої розкоші та вишуканого стилю. Глибокий відтінок молочного шоколаду у поєднанні з контрастними деталями створює дорогий та благородний образ.",
+    "image": "img/products/10/DSC_1052.webp",
+    "images": [
+      "img/products/10/DSC_1052.webp",
+      "img/products/10/DSC_1053.webp"
+    ]
+  },
+  "prod-11": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Dark Blue Orchid",
+    "description": "Цей комплект — справжня ода драматичній елегантності. Поєднання глибокого чорного кольору з об'ємною графітовою вишивкою створює загадковий та розкішний образ.",
+    "image": "img/products/11/DSC_1063.webp",
+    "images": [
+      "img/products/11/DSC_1063.webp",
+      "img/products/11/DSC_1068.webp"
+    ]
+  },
+  "prod-12": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Silk Green",
+    "description": "Він поєднує у собі комфорт базової білизни та естетику преміального сегмента. Гладка поверхня шовку дозволяє носити його під будь-якими тканинами, а нестандартне поєднання кольорів виділяє його серед класичних моделей.Цей шовковий комплект — ідеальне втілення сучасної розкоші та вишуканого мінімалізму. Шляхетний відтінок темної хвої (Forest Green) у поєднанні з ніжним шовковим блиском створює образ, що випромінює спокійну впевненість.",
+    "image": "img/products/12/DSC_1089.webp",
+    "images": [
+      "img/products/12/DSC_1089.webp",
+      "img/products/12/DSC_1091.webp"
+    ]
+  },
+  "prod-13": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Classic Black",
+    "description": "Цей комплект — втілення зухвалої сексуальності та архітектурного дизайну. Виконаний у класичному чорному кольорі, він робить ставку на гру напівпрозорих фактур та геометрію ліній.",
+    "image": "img/products/13/DSC_2125.webp",
+    "images": [
+      "img/products/13/DSC_2125.webp",
+      "img/products/13/DSC_2127.webp"
+    ]
+  },
+  "prod-14": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Atlantis Assortment",
+    "description": "Цей комплект — втілення непомітної елегантності та «другої шкіри». Його дизайн побудований на поєднанні нейтральної нюдової основи та акцентного блакитного кольору, що створює свіжий, майже весняний настрій.",
+    "image": "img/products/14/DSC_2136.webp",
+    "images": [
+      "img/products/14/DSC_2136.webp",
+      "img/products/14/DSC_2138.webp"
+    ]
+  },
+  "prod-15": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Beige Rose",
+    "description": "Цей комплект є втіленням витонченої класики та \"тихої розкоші\". Виконаний у пудрово-бежевих тонах, він виглядає максимально природно, водночас захоплюючи майстерністю виконання та складністю деталей.",
+    "image": "img/products/15/DSC_2146.webp",
+    "images": [
+      "img/products/15/DSC_2146.webp",
+      "img/products/15/DSC_2149.webp"
+    ]
+  },
+  "prod-16": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Soft Blue",
+    "description": "Цей комплект є справжнім втіленням романтики, де класична ніжність мережива зустрічається з благородним блиском атласного шовку. Це вишуканий вибір для тих, хто віддає перевагу поєднанню комфорту та естетичної довершеності.",
+    "image": "img/products/16/DSC_2159.webp",
+    "images": [
+      "img/products/16/DSC_2159.webp",
+      "img/products/16/DSC_2162.webp"
+    ]
+  },
+  "prod-17": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Dream",
+    "description": "Цей комплект — справжнє втілення ніжної романтики та аристократичної вишуканості. Поєднання світло-блакитного шовку та насиченого синього мережива створює глибокий, багатогранний образ, який виглядає надзвичайно дорого.",
+    "image": "img/products/17/DSC_2173.webp",
+    "images": [
+      "img/products/17/DSC_2173.webp",
+      "img/products/17/DSC_2177.webp"
+    ]
+  },
+  "prod-18": {
+    "price": "1650",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Wild Pink",
+    "description": "Цей комплект — справжній маніфест зухвалості та впевненості. Поєднання яскравого рожевого кольору з агресивним «тваринним» принтом (зебра) створює образ у стилі Wild & Glam, який неможливо ігнорувати.",
+    "image": "img/products/18/DSC_2185.webp",
+    "images": [
+      "img/products/18/DSC_2185.webp",
+      "img/products/18/DSC_2187.webp"
+    ]
+  },
+  "prod-19": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Orange Assortment",
+    "description": "Це вишуканий комплект у стилі \"Color Blocking\", який вдало поєднує ніжну основу з яскравим, енергійним акцентом. Його дизайн побудований на грі контрастів, що робить його дуже сучасним та стильним.",
+    "image": "img/products/19/DSC_2201.webp",
+    "images": [
+      "img/products/19/DSC_2201.webp",
+      "img/products/19/DSC_2203.webp"
+    ]
+  },
+  "prod-20": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Silk Nude",
+    "description": "Цей комплект — втілення концепції \"тихої розкоші\" (quiet luxury). Його дизайн побудований на поєднанні витонченого мінімалізму, благородних матеріалів та ідеальної палітри.",
+    "image": "img/products/20/DSC_2213.webp",
+    "images": [
+      "img/products/20/DSC_2213.webp",
+      "img/products/20/DSC_2215.webp"
+    ]
+  },
+  "prod-21": {
+    "price": "1600",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Atlantic",
+    "description": "Цей комплект — яскравий представник монохромного стилю, де головну роль відіграє глибина та чистота відтінку. Давайте детальніше проаналізуємо цей колір та його вплив на загальний образ.",
+    "image": "img/products/21/DSC_2229.webp",
+    "images": [
+      "img/products/21/DSC_2229.webp",
+      "img/products/21/DSC_2231.webp"
+    ]
+  },
+  "prod-22": {
+    "price": "1700",
+    "category": "lingerie",
+    "size": ["уточнюйте"],
+    "title": "Grey Flowers",
+    "description": "Це модель, яка балансує на межі стриманості та відвертості. Він не є занадто \"гучним\" завдяки своєму графітовому кольору, але мереживні деталі роблять його по-справжньому вишуканим. Це ідеальний варіант для вечірнього образу, де важливо почуватися не лише зручно, а й по-особливому.",
+    "image": "img/products/22/DSC_2538.webp",
+    "images": [
+      "img/products/22/DSC_2538.webp",
+      "img/products/22/DSC_2541.webp"
+    ]
+  },
+  "prod-01": {
+    "price": "1200",
+    "category": "swimwear",
+    "size": ["XS", "S", "M", "L"],
+    "title": "Bikini",
+    "description": "Додайте нотку розкоші вашому пляжному образу з цим вишуканим комплектом бікіні насиченого кольору. Ця модель створена для того, щоб підкреслити природну красу та подарувати відчуття впевненості під променями сонця.",
+    "image": "img/products/1/Bikini-Lemon.webp",
+    "variants": [
+      { "colorName": "Lemon", "colorCode": "#EFEE7C", "image": "img/products/1/Bikini-Lemon.webp" },
+      { "colorName": "Lime", "colorCode": "#B4F770", "image": "img/products/1/Bikini-Lime.webp" },
+      { "colorName": "Orange", "colorCode": "#FF902E", "image": "img/products/1/Bikini-Orange.webp" },
+      { "colorName": "Black", "colorCode": "#323232", "image": "img/products/1/Bikini-Black.webp" },
+      { "colorName": "Pink Electric", "colorCode": "#FF50A3", "image": "img/products/1/Bikini-Pink_Electric.webp" },
+      { "colorName": "Total Gold", "colorCode": "#DCC5AB", "image": "img/products/1/Bikini-Total_Gold.webp" },
+      { "colorName": "Peony", "colorCode": "#E8B0AD", "image": "img/products/1/Bikini-Peony.webp" },
+      { "colorName": "Royal Blue", "colorCode": "#263482", "image": "img/products/1/Bikini-Royal_Blue_Matt.webp" }
+    ]
+  }
+}

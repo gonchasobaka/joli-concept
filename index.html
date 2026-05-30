@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="index, follow" />
+<!-- Concept / spec work — design & build portfolio piece -->
+<meta name="copyright" content="Design concept — Joli lingerie atelier (spec work)." />
+<title>JOLI — Atelier de lingerie · Dnipro</title>
+<meta name="description" content="Joli — ательє білизни ручної роботи з Дніпра. Шовк, мереживо, бездоганна посадка." />
+<!-- Social / Telegram link preview -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="JOLI" />
+<meta property="og:title" content="JOLI — ательє білизни ручної роботи · Дніпро" />
+<meta property="og:description" content="Шовк, французьке мереживо та бездоганна посадка. Білизна, що відчувається. absolutely charm." />
+<!-- TODO: replace YOUR-USERNAME with your GitHub handle so the Telegram/social card resolves -->
+<meta property="og:url" content="https://YOUR-USERNAME.github.io/joli-concept/" />
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/joli-concept/img/og-card.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="JOLI — absolutely charm" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="JOLI — ательє білизни ручної роботи · Дніпро" />
+<meta name="twitter:description" content="Шовк, мереживо та бездоганна посадка. Білизна, що відчувається." />
+<meta name="twitter:image" content="https://YOUR-USERNAME.github.io/joli-concept/img/og-card.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Prata&family=Unbounded:wght@400;600;800&family=Manrope:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --fd:'Cormorant'; --fs:'Manrope'; --fm:'JetBrains Mono';
+    --bone:#EAE3D6; --bone-2:#E0D7C6; --ink:#15110D; --ink-2:#1E1813;
+    --clay:#BB8160; --clay-d:#9A6747; --muted:#897E6C;
+    --line:rgba(21,17,13,.14); --line-l:rgba(234,227,214,.16);
+    --e:cubic-bezier(.19,1,.22,1); --e2:cubic-bezier(.7,0,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{font-family:var(--fs),sans-serif;background:url(img/joli-mark.png) repeat,var(--ink);background-size:340px auto;color:var(--bone);font-weight:300;line-height:1.6;overflow-x:hidden}
+  body.locked{overflow:hidden;height:100vh}
+  h1,h2,h3,.serif{font-family:var(--fd),serif;font-weight:300;line-height:.98;letter-spacing:-.015em}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:var(--fm),monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+  .wrap{max-width:1480px;margin:0 auto;padding:0 48px}
+
+  /* grain + cursor */
+  .grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .cursor,.cursor-f{position:fixed;top:0;left:0;z-index:9500;pointer-events:none;border-radius:50%;mix-blend-mode:difference}
+  .cursor{width:7px;height:7px;background:#fff;transform:translate(-50%,-50%)}
+  .cursor-f{width:42px;height:42px;border:1px solid rgba(255,255,255,.6);transform:translate(-50%,-50%);transition:width .3s var(--e),height .3s var(--e),background .3s,opacity .3s}
+  .cursor-f.grow{width:84px;height:84px;background:rgba(255,255,255,.1);border-color:transparent}
+  .cursor-f .lbl{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--fm),monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fff;opacity:0;transition:.3s}
+  .cursor-f.grow .lbl{opacity:1}
+  @media(hover:none){.cursor,.cursor-f{display:none}}
+
+  /* loader */
+  .loader{position:fixed;inset:0;z-index:9999;background:url(img/joli-mark.png) repeat,var(--ink);background-size:300px auto;display:grid;place-items:center;transition:transform 1.1s var(--e2);overflow:hidden}
+  .loader.done{transform:translateY(-101%)}
+  .loader .lnum{font-family:var(--fd),serif;font-style:italic;font-size:clamp(80px,18vw,240px);color:var(--bone);line-height:1;opacity:.92}
+  .loader .lbar{position:absolute;bottom:0;left:0;height:2px;background:var(--clay);width:0}
+  .loader .lcap{position:absolute;bottom:34px;left:48px;color:var(--muted)}
+  .loader .lcap2{position:absolute;bottom:34px;right:48px;color:var(--muted)}
+
+  /* nav */
+  header{position:fixed;top:0;left:0;right:0;z-index:8000;mix-blend-mode:difference;transition:transform .5s var(--e)}
+  header.hide{transform:translateY(-100%)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:30px 48px}
+  .brand{font-family:var(--fd),serif;font-size:26px;letter-spacing:.06em;color:#fff}
+  .navlinks{display:flex;gap:38px}
+  .navlinks a{color:#fff;font-size:13px;letter-spacing:.04em;position:relative;overflow:hidden;height:18px}
+  .navlinks a span{display:block;transition:transform .45s var(--e)}
+  .navlinks a span::after{content:attr(data-t);display:block}
+  .navlinks a:hover span{transform:translateY(-50%)}
+  .menu-btn{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer}
+  .menu-btn span{width:28px;height:1.5px;background:#fff}
+
+  /* reveal helpers */
+  .ln{display:block;overflow:hidden}
+  .ln>*{display:block;transform:translateY(110%);transition:transform 1.05s var(--e)}
+  .in .ln>*{transform:none}
+  .fade{opacity:0;transform:translateY(26px);transition:opacity 1s var(--e),transform 1s var(--e)}
+  .in.fade,.in .fade{opacity:1;transform:none}
+  .clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--e2)}
+  .in .clip,.clip.in{clip-path:inset(0 0 0 0)}
+  .stag>*{transition-delay:calc(var(--i,0)*.08s)}
+
+  /* HERO */
+  .hero{min-height:100svh;display:grid;grid-template-columns:1.04fr .96fr;align-items:stretch;overflow:hidden}
+  .hero-l{display:flex;flex-direction:column;justify-content:flex-end;padding:120px 50px 6vh;position:relative}
+  .hero-side{color:var(--muted);margin-bottom:auto}
+  .hero-h{font-size:clamp(50px,8.2vw,132px);text-align:left;letter-spacing:-.02em;margin-top:30px}
+  .hero-h em{font-style:italic;color:var(--clay)}
+  .hero-meta{margin-top:32px;max-width:420px}
+  .hero-meta .t{color:#cdc4b2;font-size:16px}
+  .hero-cue{display:flex;align-items:center;gap:12px;color:var(--muted);margin-top:30px}
+  .hero-cue i{width:1px;height:46px;background:var(--clay);display:block;animation:cue 2s var(--e) infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+  .hero-r{position:relative;overflow:hidden;background:var(--bone-2)}
+  .hero-r .himg{position:absolute;inset:0}
+  .hero-r .himg img,.hero-r .himg .hmedia{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+  .hero-r::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(21,17,13,.28),transparent 42%)}
+  .hero-cap{position:absolute;right:24px;bottom:24px;z-index:2;color:#fff;mix-blend-mode:difference}
+  .hero-accent{position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line-l);z-index:3}
+
+  /* marquee */
+  /* divider */
+  .divider{display:flex;align-items:center;justify-content:center;gap:26px;padding:clamp(64px,9vh,118px) 48px}
+  .divider span{color:var(--clay);font-size:13px;letter-spacing:.3em;display:inline-block;transform-origin:50% 50%;will-change:transform}
+  .divider::before,.divider::after{content:"";height:1px;width:0;background:var(--line-l);transition:width 1.4s var(--e)}
+  .divider.in::before,.divider.in::after{width:min(30vw,380px)}
+
+  /* manifesto */
+  .sec{padding:clamp(90px,14vh,180px) 0}
+  .bone{background:var(--bone);color:var(--ink)}
+  .bone .mono{color:var(--clay-d)}
+  .label{display:flex;align-items:center;gap:14px;margin-bottom:50px}
+  .label .dot{width:7px;height:7px;border-radius:50%;background:var(--clay)}
+  .mani{font-family:var(--fd),serif;font-weight:300;font-size:clamp(30px,5.2vw,76px);line-height:1.04;letter-spacing:-.02em;max-width:16ch}
+  .mani em{font-style:italic;color:var(--clay-d)}
+  .mani .mut{color:rgba(21,17,13,.32)}
+  .mani .mw{color:rgba(21,17,13,.20);transition:color .55s var(--e)}
+  .mani .mw.on{color:var(--ink)}
+  .mani .mw.acc{font-style:italic}
+  .mani .mw.acc.on{color:var(--clay-d)}
+
+  /* editorial reveal band */
+  .band{position:relative;height:108vh;min-height:680px;overflow:hidden}
+  .band .bimg{position:absolute;inset:0}
+  .band .bimg img{width:100%;height:120%;object-fit:cover;object-position:50% 42%}
+  /* closing band: lower-biased crop so the back/panties stay in frame */
+  .band--low .bimg img{position:absolute;left:0;top:50%;transform:translateY(-50%);height:118%;object-position:50% 60%}
+  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,13,.5),rgba(21,17,13,.05) 40%,rgba(21,17,13,.6))}
+  .band .bcontent{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center}
+  .band h2{font-size:clamp(40px,8vw,140px);text-align:center}
+  .band h2 em{font-style:italic;color:var(--clay)}
+  .band .bsub{text-align:center;max-width:520px;margin:26px auto 0;color:#e7ddcb;font-size:17px}
+
+  /* about / atelier */
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:90px;align-items:center}
+  .about-fig{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone-2)}
+  .about-fig img{width:100%;height:100%;object-fit:cover}
+  .about-fig .cap{position:absolute;left:18px;bottom:18px;color:#fff;mix-blend-mode:difference}
+  .about h2{font-size:clamp(34px,5vw,68px);margin:24px 0 30px}
+  .about p{color:rgba(21,17,13,.66);font-size:17px;margin-bottom:20px;max-width:480px}
+  .about .sig{font-family:var(--fd),serif;font-style:italic;font-size:26px;color:var(--ink);margin-top:24px}
+  .counts{display:flex;gap:54px;margin-top:54px;border-top:1px solid var(--line);padding-top:34px}
+  .counts .n{font-family:var(--fd),serif;font-size:54px;line-height:1;color:var(--ink)}
+  .counts .l{color:var(--muted);margin-top:8px}
+
+  /* collections — horizontal pin */
+  .hpin{position:relative}
+  .hpin .sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center;perspective:2600px;perspective-origin:50% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
+  .htrack{display:flex;align-items:center;gap:34px;padding:0 48px;will-change:transform;transform-style:preserve-3d}
+  .hhead{flex:0 0 auto;width:min(40vw,440px);padding-right:30px}
+  .hhead h2{font-size:clamp(40px,6vw,90px);margin:18px 0 22px}
+  .hhead p{color:#cdc4b2;max-width:300px}
+  .pcard{flex:0 0 auto;width:min(36vw,400px);cursor:pointer;transform-style:preserve-3d;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:filter .5s var(--e)}
+  .pcard .pimgbox{aspect-ratio:3/4;background:var(--bone);position:relative;overflow:hidden}
+  .pcard .pimgbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7%;transition:opacity .7s var(--e),transform 1.2s var(--e)}
+  .pcard .pimgbox .b{opacity:0}
+  .pcard:hover .pimgbox .f,.pcard.active .pimgbox .f{opacity:0}
+  .pcard:hover .pimgbox .b,.pcard.active .pimgbox .b{opacity:1;transform:scale(1.05)}
+  .pcard.active{filter:drop-shadow(0 30px 60px rgba(21,17,13,.28))}
+  .pcard.active .pimgbox{box-shadow:0 0 0 1px rgba(21,17,13,.06)}
+  .pcard .pimgbox::after{content:"Зворот";position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--fm),monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);opacity:0;transition:opacity .5s var(--e)}
+  .pcard.active .pimgbox::after,.pcard:hover .pimgbox::after{opacity:.85}
+  .pcard .pix{position:absolute;top:14px;left:14px;z-index:2;mix-blend-mode:difference;color:#fff}
+  .pcard .prow{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;gap:12px}
+  .pcard h3{font-family:var(--fd),serif;font-size:25px;font-weight:400}
+  .pcard .pr{font-family:var(--fm),monospace;font-size:13px;color:var(--clay);white-space:nowrap}
+  .pcard .pm{color:var(--muted);margin-top:4px;font-size:13px}
+  .hend{flex:0 0 auto;width:min(30vw,360px);display:flex;flex-direction:column;justify-content:center;gap:22px}
+  .hend p{font-family:var(--fd),serif;font-style:italic;font-size:30px;line-height:1.2}
+  .btn{display:inline-flex;align-items:center;gap:14px;padding:18px 40px;border:1px solid currentColor;border-radius:50px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;transition:.5s var(--e);align-self:flex-start}
+  .btn:hover{gap:22px}
+  .btn.fill{background:var(--clay);border-color:var(--clay);color:#fff}
+  .btn.fill:hover{background:var(--clay-d);border-color:var(--clay-d)}
+
+  /* philosophy quote */
+  .phil{text-align:center}
+  .phil .mono{color:var(--clay)}
+  .phil p{font-family:var(--fd),serif;font-weight:300;font-size:clamp(30px,5vw,72px);line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:30px auto 0}
+  .phil p em{font-style:italic;color:var(--clay)}
+  /* silk film background */
+  .filmsec{position:relative;overflow:hidden}
+  .filmsec>.wrap{position:relative;z-index:2}
+  .filmsec .filmbg{position:absolute;inset:0;z-index:0}
+  .filmsec .filmbg .hmedia{width:100%;height:122%;object-fit:cover;object-position:50% 50%}
+  .filmsec::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(14,11,8,.64),rgba(14,11,8,.7))}
+
+  /* lookbook */
+  .lookhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px}
+  .lookhead .label{margin:0}
+  .lookhead h2{font-family:var(--fd),serif;font-size:clamp(32px,5vw,64px);font-weight:300}
+  .lookgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .lk{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bone-2)}
+  .lk img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--e)}
+  .lk:hover img{transform:scale(1.06)}
+  .lk figcaption{position:absolute;left:15px;bottom:13px;color:#fff;mix-blend-mode:difference;z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+  .lk.mid{margin-top:50px}
+  /* diversity campaign */
+  .divsec{background:url(img/joli-mark.png) repeat,var(--ink);background-size:320px auto;color:var(--bone)}
+  .divsec .lookhead h2{color:var(--bone)}
+  .divsec .lookhead h2 em{font-style:italic;color:var(--clay)}
+  .divlead{max-width:560px;margin:-24px 0 44px;color:#cdc4b2;font-size:17px}
+  .divgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .dv{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--ink-2);border-radius:2px}
+  .dv img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.02) brightness(.97);transition:transform 1.4s var(--e),filter .6s var(--e)}
+  .dv:hover img{transform:scale(1.05);filter:saturate(1) contrast(1) brightness(1)}
+  .dv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(21,17,13,.55));pointer-events:none}
+  .dv figcaption{position:absolute;left:14px;bottom:13px;z-index:2;color:#fff;font-family:var(--fm),monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  .dv:nth-child(2){margin-top:38px}.dv:nth-child(4){margin-top:38px}
+
+  /* testimonials */
+  .treel{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tc{padding:54px 30px;border-right:1px solid var(--line);transition:.5s var(--e)}
+  .tc:last-child{border-right:0}.tc:hover{background:var(--bone-2)}
+  .tc .st{color:var(--clay);letter-spacing:3px;font-size:13px;margin-bottom:22px}
+  .tc q{font-family:var(--fd),serif;font-style:italic;font-size:22px;line-height:1.36;display:block;margin-bottom:26px;color:var(--ink);quotes:none}
+  .tc .nm{font-size:14px;color:var(--ink)}
+  .tc .rl{color:var(--muted);font-size:12px;margin-top:3px}
+
+  /* dual */
+  .dual{display:grid;grid-template-columns:1fr 1fr}
+  .dual .pane{padding:clamp(70px,11vh,150px) 64px}
+  .dual .a{background:var(--bone-2);color:var(--ink)}
+  .dual .b{background:url(img/joli-mark.png) repeat,var(--ink-2);background-size:290px auto;color:var(--bone)}
+  .dual h2{font-family:var(--fd),serif;font-size:clamp(34px,4vw,58px);font-weight:300;margin:22px 0 26px}
+  .dual p{max-width:380px;margin-bottom:16px}
+  .dual .a p{color:rgba(21,17,13,.62)}.dual .b p{color:#cdc4b2}
+  .ci{font-size:17px;margin:8px 0}
+  .ci a{border-bottom:1px solid var(--line-l);padding-bottom:3px}
+
+  /* footer */
+  footer{background:url(img/joli-mark.png) repeat,var(--ink);background-size:300px auto;padding:90px 0 40px;overflow:hidden}
+  .fmark{font-family:var(--fd),serif;font-size:clamp(90px,24vw,400px);line-height:.8;text-align:center;letter-spacing:-.02em;color:var(--bone);padding:30px 0 10px}
+  .fgrid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding:50px 0 40px;border-top:1px solid var(--line-l);margin-top:30px}
+  .fcol h4{color:var(--clay);margin-bottom:16px}
+  .fcol a,.fcol p{display:block;color:#bdb3a1;margin-bottom:10px;font-size:15px;transition:.3s}
+  .fcol a:hover{color:var(--bone)}
+  .fbot{display:flex;justify-content:space-between;padding-top:26px;border-top:1px solid var(--line-l);color:var(--muted)}
+
+  /* mobile menu */
+  .mobnav{position:fixed;inset:0;z-index:8500;background:var(--ink-2);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:48px;transform:translateY(-100%);transition:transform .6s var(--e2)}
+  .mobnav.open{transform:none}
+  .mobnav a{font-family:var(--fd),serif;font-size:44px;color:var(--bone)}
+
+  @media(max-width:1024px){
+    .wrap{padding:0 24px}
+    nav{padding:22px 24px}
+    .navlinks{display:none}.menu-btn{display:flex}
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-l{padding:120px 24px 40px}
+    .hero-r{height:78vh;order:2}
+    .about-grid,.dual{grid-template-columns:1fr;gap:46px}
+    .treel{grid-template-columns:1fr 1fr}
+    .tc{border-bottom:1px solid var(--line)}.tc:nth-child(2){border-right:0}
+    /* products → native swipe carousel with snap */
+    .hpin .sticky{height:auto;position:static;display:block;overflow:visible;-webkit-mask:none;mask:none;perspective:none}
+    .htrack{flex-direction:row;flex-wrap:nowrap;align-items:stretch;transform:none!important;transform-style:flat;gap:14px;padding:4px 11vw 18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .htrack::-webkit-scrollbar{display:none}
+    .hhead,.pcard,.hend{width:78vw;flex:0 0 78vw;scroll-snap-align:center}
+    .hhead{padding-right:0;display:flex;flex-direction:column;justify-content:center}
+    .hend{justify-content:center}
+    .pcard{opacity:.55;transition:opacity .45s var(--e),transform .45s var(--e)}
+    .pcard.active{opacity:1}
+    .counts{flex-wrap:wrap;gap:30px}
+    .dual .pane{padding:60px 28px}
+    .band{height:80vh}
+    .lookgrid{grid-template-columns:1fr 1fr;gap:12px}.lk.mid{margin-top:0}
+    .lookhead{flex-direction:column;align-items:flex-start;gap:14px}
+    .divgrid{grid-template-columns:1fr 1fr;gap:12px}.dv:nth-child(2),.dv:nth-child(4){margin-top:0}
+  }
+
+  /* ---- PHONE ---- */
+  @media(max-width:600px){
+    html,body{overflow-x:hidden}
+    body,.divsec,.dual .b,footer,.loader{background-size:210px auto}
+    .wrap{padding:0 18px}
+    .hero-meta{max-width:100%}
+    .band .bsub{padding:0 20px;font-size:14px}
+    nav{padding:16px 18px}
+    .hero-l{padding:104px 18px 36px}
+    .hero-r{height:62vh}
+    .hero-h{font-size:clamp(40px,13vw,64px)}
+    .hero-meta .t{font-size:15px}
+    .sec{padding:clamp(64px,10vh,110px) 0}
+    .mani{font-size:clamp(26px,7vw,40px)}
+    .band{height:74vh;min-height:480px}
+    .band--low{height:78vh!important}
+    .band h2{font-size:clamp(34px,11vw,68px)}
+    .band .bsub{font-size:15px;padding:0 6px}
+    .lookgrid,.divgrid{gap:9px}
+    .divlead{font-size:15px;margin:-10px 0 30px}
+    .dv figcaption,.lk figcaption{font-size:9px;left:10px;bottom:9px}
+    .treel{grid-template-columns:1fr}.tc:nth-child(2){border-right:0}
+    .fmark{font-size:30vw}
+    .fgrid{gap:22px}.fbot{flex-direction:column;gap:8px;font-size:12px}
+    .mobnav a{font-size:34px}
+    /* design switcher fits small screens */
+    .dz{right:14px;bottom:14px}
+    .dz-panel{width:min(86vw,292px)}
+    .dz-btn{padding:11px 16px;font-size:11px}
+    /* tame heavy hover-only transforms on touch */
+    .lk:hover img,.dv:hover img,.pcard:hover .pimgbox .b{transform:none}
+  }
+
+  /* ---- design switcher ---- */
+  .dz{position:fixed;right:22px;bottom:22px;z-index:9600}
+  .dz-btn{display:flex;align-items:center;gap:9px;background:var(--bone);color:var(--ink);border:0;border-radius:40px;padding:13px 20px;cursor:pointer;font-family:var(--fs),sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 14px 40px -16px rgba(0,0,0,.7);transition:transform .4s var(--e)}
+  .dz-btn:hover{transform:translateY(-2px)}
+  .dz-btn .ic{font-size:14px;color:var(--clay-d)}
+  .dz-pulse{animation:dzp 2.6s ease-in-out infinite}
+  @keyframes dzp{0%,100%{box-shadow:0 14px 40px -16px rgba(0,0,0,.7)}50%{box-shadow:0 14px 54px -8px var(--clay)}}
+  .dz-panel{position:absolute;right:0;bottom:60px;width:292px;background:var(--ink-2);border:1px solid var(--line-l);border-radius:18px;padding:22px;opacity:0;transform:translateY(14px) scale(.96);transform-origin:bottom right;pointer-events:none;transition:.45s var(--e);box-shadow:0 30px 80px -28px rgba(0,0,0,.85)}
+  .dz-panel.open{opacity:1;transform:none;pointer-events:auto}
+  .dz-close{position:absolute;top:13px;right:16px;background:none;border:0;color:var(--muted);cursor:pointer;font-size:20px;line-height:1}
+  .dz-h{font-family:var(--fm),monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);margin:2px 0 12px}
+  .dz-h.mt{margin-top:20px}
+  .dz-fonts{display:flex;flex-direction:column;gap:7px}
+  .dz-font{text-align:left;background:transparent;border:1px solid var(--line-l);border-radius:11px;padding:9px 14px;color:var(--bone);cursor:pointer;transition:.3s var(--e)}
+  .dz-font:hover{border-color:var(--clay)}
+  .dz-font.on{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+  .dz-font b{font-size:19px;font-weight:500;display:block;line-height:1.15}
+  .dz-font small{font-size:11px;opacity:.55;letter-spacing:.03em}
+  .dz-pals{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .dz-pal{border:2px solid transparent;border-radius:11px;cursor:pointer;overflow:hidden;display:flex;flex-direction:column;height:62px;padding:0;transition:.3s var(--e)}
+  .dz-pal:hover{transform:translateY(-2px)}
+  .dz-pal.on{border-color:var(--bone)}
+  .dz-pal i{flex:1;display:block}
+  .dz-pal span{font-family:var(--fm),monospace;font-size:8px;text-align:center;padding:3px 0;color:#fff;letter-spacing:.02em}
+  @media(max-width:600px){.dz-panel{width:250px}}
+</style>
+</head>
+<body class="locked">
+
+<div class="grain"></div>
+<div class="cursor"></div>
+<div class="cursor-f"><span class="lbl">↗</span></div>
+
+<div class="dz">
+  <button class="dz-btn dz-pulse" id="dzBtn"><span class="ic">✦</span> Стиль</button>
+  <div class="dz-panel" id="dzPanel">
+    <button class="dz-close" id="dzClose" aria-label="Закрити">×</button>
+    <div class="dz-h">Шрифт — оберіть</div>
+    <div class="dz-fonts" id="dzFonts"></div>
+    <div class="dz-h mt">Палітра</div>
+    <div class="dz-pals" id="dzPals"></div>
+  </div>
+</div>
+
+<div class="loader" id="loader">
+  <div class="lnum" id="lnum">0</div>
+  <span class="lcap mono">Joli Atelier</span>
+  <span class="lcap2 mono">Dnipro · UA</span>
+  <div class="lbar" id="lbar"></div>
+</div>
+
+<header id="hdr">
+  <nav>
+    <a href="#top" class="brand">joli</a>
+    <div class="navlinks">
+      <a href="#about"><span data-t="Про нас">Про нас</span></a>
+      <a href="#collections"><span data-t="Колекції">Колекції</span></a>
+      <a href="#sizes"><span data-t="Розмір">Розмір</span></a>
+      <a href="#contact"><span data-t="Контакти">Контакти</span></a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Меню"><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mobnav" id="mobnav">
+  <a href="#about">Про нас</a><a href="#collections">Колекції</a><a href="#sizes">Розмір</a><a href="#contact">Контакти</a>
+</div>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" data-reveal>
+    <div class="hero-l">
+      <span class="hero-side mono fade">Ательє білизни — Дніпро, Україна</span>
+      <h1 class="hero-h">
+        <span class="ln"><span>Білизна,</span></span>
+        <span class="ln"><span>що <em>відчувається</em>.</span></span>
+      </h1>
+      <div class="hero-meta">
+        <p class="t fade">Ательє білизни ручної роботи. Шовк, мереживо та бездоганна посадка — створені в Дніпрі, носяться як друга шкіра.</p>
+      </div>
+      <div class="hero-cue fade"><span class="mono">Гортайте</span><i></i></div>
+    </div>
+    <div class="hero-r">
+      <span class="hero-accent"></span>
+      <div class="himg clip">
+        <img src="img/editorial/hero.jpg" alt="Joli" />
+      </div>
+      <span class="hero-cap mono">Колекція 2026</span>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider" data-reveal><span class="fade">✦</span></div>
+
+  <!-- MANIFESTO -->
+  <section class="sec bone" data-reveal>
+    <div class="wrap">
+      <div class="label fade"><span class="dot"></span><span class="mono">(01) — Маніфест</span></div>
+      <p class="mani" id="mani">Ми робимо не білизну. Ми робимо <b>відчуття</b>, з якого починається <b>впевненість</b>.</p>
+    </div>
+  </section>
+
+  <!-- EDITORIAL BAND (NB2: replace img with img/editorial/campaign-01.jpg — wide editorial model shot) -->
+  <section class="band" data-reveal>
+    <div class="bimg" data-par="0.18">
+      <!-- NB2 slot → drop file at img/editorial/campaign-01.jpg (auto-upgrades) -->
+      <img src="img/editorial/campaign-01.jpg" onerror="this.onerror=null;this.src='img/joli-underwear.jpg'" alt="Joli campaign" />
+    </div>
+    <div class="bcontent wrap">
+      <h2>
+        <span class="ln"><span>Тіло —</span></span>
+        <span class="ln"><span>це <em>дім</em>.</span></span>
+      </h2>
+      <p class="bsub fade">Білизна Joli створена, щоб у ньому було тепло, вільно та красиво — щодня, а не лише для особливих випадків.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT / ATELIER -->
+  <section class="sec bone" id="about" data-reveal>
+    <div class="wrap about-grid about">
+      <div>
+        <div class="about-fig clip">
+          <!-- NB2 slot → drop file at img/editorial/atelier-craft.jpg (auto-upgrades) -->
+          <img src="img/editorial/atelier-craft.jpg" onerror="this.onerror=null;this.src='img/products/15/DSC_2149.webp'" alt="Ательє Joli" />
+          <span class="cap mono">Ручна робота · Дніпро</span>
+        </div>
+      </div>
+      <div>
+        <div class="label fade"><span class="dot"></span><span class="mono">(02) — Ательє</span></div>
+        <h2 class="fade">Кожен стібок —<br>рішення майстра.</h2>
+        <p class="fade">Ми — Joli, ательє білизни ручної роботи в Дніпрі. Працюємо з шовком і французьким мереживом, контролюючи кожен етап: від лекала до фінального стібка.</p>
+        <p class="fade">Жодного конвеєра. Лише уважні руки, природні матеріали та посадка, вивірена під справжнє тіло — щоб білизна зникала на шкірі й залишалося тільки відчуття.</p>
+        <p class="sig fade">— з любов'ю, команда Joli</p>
+        <div class="counts fade stag">
+          <div><div class="n" data-count="5">0</div><div class="l mono">Оцінка · 5.0</div></div>
+          <div><div class="n" data-count="22">0</div><div class="l mono">Моделей</div></div>
+          <div><div class="n" data-count="100">0</div><div class="l mono">% Ручна робота</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS — HORIZONTAL PIN -->
+  <section class="hpin" id="collections">
+    <div class="sticky">
+      <div class="htrack" id="htrack">
+        <div class="hhead">
+          <div class="label"><span class="dot"></span><span class="mono">(03) — Колекція 2026</span></div>
+          <h2>Обери свій<br>силует.</h2>
+          <p>Гортайте вбік. Кожна модель — у наявності та з можливістю пошиття під ваші мірки.</p>
+        </div>
+        <!-- product cards injected -->
+        <div class="hend">
+          <p>Понад 22 моделі<br>у повному каталозі.</p>
+          <a href="#contact" class="btn fill" data-cursor>Весь каталог →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY (silk film background) -->
+  <section class="sec phil filmsec" data-reveal>
+    <div class="filmbg" data-par="0.12">
+      <!-- VIDEO slot → drop file at img/editorial/silk.mp4 (auto-plays; poster fallback) -->
+      <video class="hmedia" poster="img/editorial/silk-poster.jpg" autoplay muted loop playsinline preload="metadata">
+        <source src="img/editorial/silk.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="wrap">
+      <span class="mono fade">Філософія</span>
+      <p>
+        <span class="ln"><span>Справжня розкіш —</span></span>
+        <span class="ln"><span><em>тиха</em>.</span></span>
+      </p>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section class="sec bone" data-reveal>
+    <div class="wrap">
+      <div class="lookhead fade">
+        <div class="label"><span class="dot"></span><span class="mono">(04) — Lookbook</span></div>
+        <h2>Образи Joli</h2>
+      </div>
+      <div class="lookgrid">
+        <figure class="lk clip"><img src="img/editorial/flatlay-1.jpg" loading="lazy" alt="Beige Rose"><figcaption>Beige Rose</figcaption></figure>
+        <figure class="lk clip mid"><img src="img/editorial/look-2.jpg" loading="lazy" alt="Royal Blue"><figcaption>Royal Blue</figcaption></figure>
+        <figure class="lk clip"><img src="img/editorial/look-3.jpg" loading="lazy" alt="Silver Lace"><figcaption>Silver Lace</figcaption></figure>
+        <figure class="lk clip"><img src="img/editorial/look-4.jpg" loading="lazy" alt="Silk Green"><figcaption>Silk Green</figcaption></figure>
+        <figure class="lk clip mid"><img src="img/editorial/swim-2.jpg" loading="lazy" alt="Royal Blue swim"><figcaption>Royal Blue · swim</figcaption></figure>
+        <figure class="lk clip"><img src="img/editorial/look-6.jpg" loading="lazy" alt="Atlantic"><figcaption>Atlantic</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVERSITY CAMPAIGN -->
+  <section class="sec ink divsec" data-reveal>
+    <div class="wrap">
+      <div class="lookhead fade">
+        <div class="label"><span class="dot"></span><span class="mono">(04½) — Кампанія</span></div>
+        <h2>Joli — для <em>кожної</em></h2>
+      </div>
+      <p class="divlead fade">Ручна робота означає посадку під тебе. Будь-яка форма, будь-яка шкіра — комплект, що сидить як влитий.</p>
+      <div class="divgrid">
+        <figure class="dv clip"><img src="img/editorial/div-afro.jpg" loading="lazy" alt="Joli"><figcaption>Nude · студія</figcaption></figure>
+        <figure class="dv clip"><img src="img/editorial/div-green.jpg" loading="lazy" alt="Joli"><figcaption>Emerald</figcaption></figure>
+        <figure class="dv clip"><img src="img/editorial/div-jungle.jpg" loading="lazy" alt="Joli"><figcaption>Noir</figcaption></figure>
+        <figure class="dv clip"><img src="img/editorial/div-beach.jpg" loading="lazy" alt="Joli"><figcaption>Royal · Дніпро</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec bone" data-reveal>
+    <div class="wrap">
+      <div class="label fade"><span class="dot"></span><span class="mono">(05) — 5.0 · Відгуки</span></div>
+    </div>
+    <div class="treel fade">
+      <div class="tc"><div class="st">★★★★★</div><q>«Дякую велике за чудову якість — я дуже задоволена комплектом.»</q><div class="nm">Ірина</div><div class="rl mono">Постійна клієнтка</div></div>
+      <div class="tc"><div class="st">★★★★★</div><q>«Допомогли з подарунком для дружини. Стиль та якість на висоті!»</q><div class="nm">Евген</div><div class="rl mono">Подарунок</div></div>
+      <div class="tc"><div class="st">★★★★★</div><q>«Задоволена купальником, вже планую повторити в іншому кольорі.»</q><div class="nm">Ольга</div><div class="rl mono">Купальники</div></div>
+      <div class="tc"><div class="st">★★★★★</div><q>«Пошили під мої мірки — увага до деталей просто неймовірна.»</q><div class="nm">Юлія</div><div class="rl mono">Пошиття</div></div>
+    </div>
+  </section>
+
+  <!-- CLOSING CAMPAIGN -->
+  <section class="band band--low" data-reveal style="height:92vh;min-height:600px">
+    <div class="bimg" data-par="0.10">
+      <!-- NB2 slot → img/editorial/campaign-02.jpg (модель, розвернута/зі спини) -->
+      <img src="img/editorial/campaign-02.jpg" onerror="this.onerror=null;this.src='img/editorial/campaign-01.jpg'" alt="Joli" />
+    </div>
+    <div class="bcontent wrap">
+      <h2>
+        <span class="ln"><span>Joli —</span></span>
+        <span class="ln"><span>твоя <em>впевненість</em>.</span></span>
+      </h2>
+      <p class="bsub fade">Білизна ручної роботи з Дніпра. Створимо комплект і під ваші мірки.</p>
+      <div class="fade" style="text-align:center;margin-top:32px"><a href="#contact" class="btn fill" data-cursor>Замовити →</a></div>
+    </div>
+  </section>
+
+  <!-- DUAL: size + contact -->
+  <section id="sizes">
+    <div class="dual">
+      <div class="pane a" data-reveal>
+        <div class="label fade"><span class="dot"></span><span class="mono">(06) — Розмір</span></div>
+        <h2 class="fade">Бездоганна<br>посадка.</h2>
+        <p class="fade">Кілька замірів — і ми підкажемо ваш ідеальний розмір. За потреби пошиємо комплект саме під ваші мірки.</p>
+        <a href="#contact" class="btn fade" data-cursor>Розмірна таблиця →</a>
+      </div>
+      <div class="pane b" id="contact" data-reveal>
+        <div class="label fade"><span class="dot"></span><span class="mono">(07) — Контакти</span></div>
+        <h2 class="fade">Завітайте<br>до ательє.</h2>
+        <p class="fade">Дніпро · Україна</p>
+        <div class="ci fade"><a href="tel:+380970000000" data-cursor>+38 (097) 000 00 00</a></div>
+        <div class="ci fade"><a href="mailto:hello@joli.studio" data-cursor>hello@joli.studio</a></div>
+        <p class="fade" style="margin-top:22px">Пн — Чт&nbsp;&nbsp;9:00–18:00 &nbsp;·&nbsp; Пт&nbsp;&nbsp;9:00–17:00</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" data-reveal>
+    <div class="fmark clip">joli</div>
+    <div class="fgrid">
+      <div class="fcol">
+        <h4 class="mono">Joli</h4>
+        <p>Ательє білизни ручної<br>роботи. Дніпро, Україна.</p>
+      </div>
+      <div class="fcol">
+        <h4 class="mono">Соцмережі</h4>
+        <a href="#" data-cursor>Instagram</a><a href="#" data-cursor>Facebook</a><a href="#" data-cursor>Telegram</a>
+      </div>
+      <div class="fcol">
+        <h4 class="mono">Контакти</h4>
+        <a href="tel:+380970000000">+38 (097) 000 00 00</a>
+        <a href="mailto:hello@joli.studio">hello@joli.studio</a>
+        <p>Дніпро, Україна</p>
+      </div>
+    </div>
+    <div class="fbot mono"><span>© 2026 Joli — Concept</span><span>Design concept · spec work</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const isTouch=matchMedia('(hover:none)').matches;
+
+  /* ---- LOADER ---- */
+  const loader=document.getElementById('loader'),lnum=document.getElementById('lnum'),lbar=document.getElementById('lbar');
+  let p=0;const li=setInterval(()=>{
+    p+=Math.max(1,Math.round((100-p)*0.09));if(p>=100){p=100;clearInterval(li);finish()}
+    lnum.textContent=p;lbar.style.width=p+'%';
+  },28);
+  function finish(){setTimeout(()=>{
+    loader.classList.add('done');document.body.classList.remove('locked');
+    const hero=document.querySelector('.hero');hero&&hero.classList.add('in');
+  },380)}
+
+  /* ---- CURSOR ---- */
+  if(!isTouch){
+    const dot=document.querySelector('.cursor'),f=document.querySelector('.cursor-f');
+    let mx=innerWidth/2,my=innerHeight/2,fx=mx,fy=my;
+    addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`});
+    (function loop(){fx+=(mx-fx)*.16;fy+=(my-fy)*.16;f.style.transform=`translate(${fx}px,${fy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+    const grow=el=>{f.classList.add('grow');const l=el.getAttribute('data-cursor');f.querySelector('.lbl').textContent=(l&&l.length>1)?l:'↗'};
+    const shrink=()=>f.classList.remove('grow');
+    document.querySelectorAll('a,button,[data-cursor],.pcard').forEach(el=>{el.addEventListener('mouseenter',()=>grow(el));el.addEventListener('mouseleave',shrink)});
+  }
+
+  /* ---- SPLIT TEXT (hero words) ---- */
+  document.querySelectorAll('[data-split]').forEach(el=>{
+    const words=el.textContent.split(' ');el.innerHTML='';
+    words.forEach((w,i)=>{const s=document.createElement('span');s.style.display='inline-block';s.style.transition='transform 1s var(--e)';s.style.transitionDelay=(i*.06)+'s';s.textContent=w;el.appendChild(s);el.appendChild(document.createTextNode(' '))});
+  });
+
+  /* ---- REVEAL ---- */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    el.querySelectorAll('.fade,.clip').forEach((c,i)=>c.style.setProperty('--i',i%6));
+    io.observe(el);
+  });
+  // standalone fades not in a reveal section
+  document.querySelectorAll('.clip,.fade').forEach(el=>{if(!el.closest('[data-reveal]'))io.observe(el)});
+
+  /* ---- COUNTERS ---- */
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,to=+el.dataset.count;let n=0;const st=Math.max(1,Math.round(to/40));const t=setInterval(()=>{n+=st;if(n>=to){n=to;clearInterval(t)}el.textContent=n},26);cio.unobserve(el)}}),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+  /* ---- PARALLAX ---- */
+  const pars=[...document.querySelectorAll('[data-par]')];
+  const heroImg=document.querySelector('.hero-r .himg .hmedia, .hero-r .himg img'), heroL=document.querySelector('.hero-l');
+  const heroR=document.querySelector('.hero-r .himg'), heroCap=document.querySelector('.hero-cap');
+  const dv=document.querySelector('.divider'), dvStar=dv&&dv.querySelector('span');
+  /* manifesto word-fill setup */
+  const mani=document.getElementById('mani'); let mwords=[];
+  if(mani){
+    const frag=document.createDocumentFragment();
+    [...mani.childNodes].forEach(n=>{
+      if(n.nodeType===3){n.textContent.split(/(\s+)/).forEach(t=>{
+        if(t.trim()){const s=document.createElement('span');s.className='mw';s.textContent=t;frag.appendChild(s);}
+        else if(t){frag.appendChild(document.createTextNode(t));}});}
+      else if(n.nodeName==='B'){const s=document.createElement('span');s.className='mw acc';s.textContent=n.textContent;frag.appendChild(s);}
+    });
+    mani.innerHTML=''; mani.appendChild(frag); mwords=[...mani.querySelectorAll('.mw')];
+  }
+  function onScroll(){
+    const vh=innerHeight;
+    pars.forEach(el=>{const r=el.getBoundingClientRect();const prog=(r.top+r.height/2-vh/2)/vh;el.style.transform=`translateY(${prog*-(parseFloat(el.dataset.par)*120)}px)`});
+    /* hero cinematic: image zooms + drifts (depth), text drifts up & fades, caption floats */
+    const hp=Math.max(0,Math.min(1,scrollY/vh));
+    if(heroImg)heroImg.style.transform=`scale(${(1+hp*0.13).toFixed(3)}) translateY(${(-hp*26).toFixed(1)}px)`;
+    if(heroL){heroL.style.transform=`translateY(${(-hp*72).toFixed(1)}px)`;heroL.style.opacity=(1-hp*0.55).toFixed(2);}
+    if(heroCap)heroCap.style.transform=`translateY(${(hp*40).toFixed(1)}px)`;
+    if(heroR)heroR.style.clipPath=`inset(0 0 ${(hp*8).toFixed(1)}% 0)`;
+    /* divider: the ✦ slowly rotates & breathes as it crosses the viewport */
+    if(dvStar){const r=dv.getBoundingClientRect();const p=(r.top+r.height/2-vh/2)/vh;
+      dvStar.style.transform=`rotate(${(p*130).toFixed(1)}deg) scale(${(1.25-Math.min(0.45,Math.abs(p))).toFixed(3)})`;
+      dvStar.style.opacity=(0.5+Math.max(0,0.5-Math.abs(p))).toFixed(2);}
+    /* manifesto: words light up with scroll progress */
+    if(mwords.length){const r=mani.getBoundingClientRect();let p=(vh*0.82-r.top)/(vh*0.82-vh*0.2);p=Math.max(0,Math.min(1,p));const lit=Math.round(p*mwords.length);for(let i=0;i<mwords.length;i++)mwords[i].classList.toggle('on',i<lit);}
+    horiz();
+  }
+
+  /* ---- HORIZONTAL PIN ---- */
+  const hpin=document.querySelector('.hpin'),htrack=document.getElementById('htrack');
+  /* mobile: swipe carousel — scale + reveal reverse-angle on the centred card */
+  function cardFx(){
+    if(innerWidth>1024)return;
+    const cards=document.querySelectorAll('.pcard');if(!cards.length)return;
+    const cx=innerWidth/2;let best=null,bd=1e9;
+    cards.forEach(c=>{
+      const b=c.getBoundingClientRect();const d=Math.abs(b.left+b.width/2-cx);
+      const k=Math.min(1,d/(innerWidth*0.62));
+      c.style.transform=`scale(${(1-k*0.08).toFixed(3)})`;
+      if(d<bd){bd=d;best=c;}
+    });
+    cards.forEach(c=>c.classList.toggle('active',c===best&&bd<innerWidth*0.34));
+  }
+  function horiz(){
+    if(isTouch||innerWidth<=1024){htrack.style.transform='';cardFx();return}
+    const r=hpin.getBoundingClientRect();const total=hpin.offsetHeight-innerHeight;
+    let prog=Math.min(1,Math.max(0,(-r.top)/total));
+    const dist=htrack.scrollWidth-innerWidth+96;
+    htrack.style.transform=`translateX(${-prog*Math.max(0,dist)}px)`;
+    // 3D coverflow: tilt each card by its distance from viewport center
+    const cx=innerWidth/2;
+    const cards=document.querySelectorAll('.pcard');
+    let best=null,bestD=Infinity;
+    cards.forEach(card=>{
+      const b=card.getBoundingClientRect();
+      let d=(b.left+b.width/2-cx)/(innerWidth*0.6);
+      d=Math.max(-1,Math.min(1,d));
+      // softer tilt + shallower depth so corners never hit the hard clip edge
+      const rot=(-d*12).toFixed(2), tz=(-Math.abs(d)*70).toFixed(1), sc=(1-Math.abs(d)*0.085).toFixed(3);
+      card.style.transform=`rotateY(${rot}deg) translateZ(${tz}px) scale(${sc})`;
+      const ad=Math.abs(d);
+      if(ad<bestD){bestD=ad;best=card;}
+    });
+    // the card nearest the center becomes "active" → reveals its reverse angle
+    cards.forEach(c=>c.classList.toggle('active',c===best&&bestD<0.18));
+  }
+  // set hpin height based on track width
+  function sizePin(){
+    if(isTouch||innerWidth<=1024){hpin.style.height='';return}
+    const dist=htrack.scrollWidth-innerWidth+96;
+    hpin.style.height=(innerHeight+Math.max(0,dist)*1.05)+'px';
+  }
+
+  /* ---- HEADER hide on scroll down ---- */
+  const hdr=document.getElementById('hdr');let lastY=0;
+  addEventListener('scroll',()=>{const y=scrollY;hdr.classList.toggle('hide',y>lastY&&y>300);lastY=y;onScroll()},{passive:true});
+
+  /* ---- MOBILE MENU ---- */
+  const mb=document.getElementById('menuBtn'),mob=document.getElementById('mobnav');
+  mb&&mb.addEventListener('click',()=>mob.classList.toggle('open'));
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+
+  /* ---- PRODUCTS ---- */
+  const P='img/products/';
+  const products=[
+    {t:'Joli',price:'2 200',meta:'Шовк · мереживо',f:'8/DSC_1014',b:'8/DSC_1050'},
+    {t:'Beige Rose',price:'1 700',meta:'Тиха розкіш',f:'15/DSC_2146',b:'15/DSC_2149'},
+    {t:'Silk Nude',price:'1 700',meta:'Натуральний шовк',f:'20/DSC_2213',b:'20/DSC_2215'},
+    {t:'Classic Black',price:'1 600',meta:'Напівпрозорі фактури',f:'13/DSC_2125',b:'13/DSC_2127'},
+    {t:'Silk Green',price:'1 700',meta:'Шовк Forest',f:'12/DSC_1089',b:'12/DSC_1091'},
+    {t:'Dream',price:'1 600',meta:'Шовк · мереживо',f:'17/DSC_2173',b:'17/DSC_2177'},
+    {t:'Royal Blue',price:'1 500',meta:'Мінімалізм',f:'7/DSC_1089',b:'7/DSC_1090'},
+    {t:'Bikini',price:'1 200',meta:'Купальник · 8 кольорів',f:'1/Bikini-Lemon',b:'1/Bikini-Total_Gold'},
+  ];
+  const hend=document.querySelector('.hend');
+  products.forEach((p,i)=>{
+    const c=document.createElement('div');c.className='pcard';
+    c.innerHTML=`<div class="pimgbox"><span class="pix mono">0${i+1}</span>
+      <img class="f" src="${P}${p.f}.webp" loading="lazy" alt="${p.t}">
+      <img class="b" src="${P}${p.b}.webp" loading="lazy" alt="">
+      </div>
+      <div class="prow"><h3>${p.t}</h3><span class="pr">${p.price} ₴</span></div>
+      <div class="pm mono">${p.meta}</div>`;
+    htrack.insertBefore(c,hend);
+  });
+
+  /* init */
+  if(!isTouch){document.querySelectorAll('.pcard').forEach(el=>{el.addEventListener('mouseenter',()=>{const f=document.querySelector('.cursor-f');f.classList.add('grow');f.querySelector('.lbl').textContent='Детально'});el.addEventListener('mouseleave',()=>document.querySelector('.cursor-f').classList.remove('grow'))})}
+  htrack.addEventListener('scroll',cardFx,{passive:true});
+  addEventListener('load',()=>{sizePin();onScroll();cardFx()});
+  addEventListener('resize',()=>{sizePin();onScroll();cardFx()});
+  sizePin();onScroll();cardFx();
+})();
+
+/* ---- DESIGN SWITCHER (fonts + palette) ---- */
+(function(){
+  const root=document.documentElement.style;
+  const FONTS=[
+    {id:'cormorant',pair:'Cormorant · Manrope',fd:"'Cormorant'",fs:"'Manrope'",disp:"'Cormorant', serif"},
+    {id:'playfair', pair:'Playfair · Inter',  fd:"'Playfair Display'",fs:"'Inter'",disp:"'Playfair Display', serif"},
+    {id:'prata',    pair:'Prata · Manrope',   fd:"'Prata'",fs:"'Manrope'",disp:"'Prata', serif"},
+    {id:'unbounded',pair:'Unbounded · Golos', fd:"'Unbounded'",fs:"'Golos Text'",disp:"'Unbounded', sans-serif"},
+  ];
+  const PALS=[
+    {id:'espresso',name:'Еспресо',ink:'#15110D',clay:'#BB8160',v:{'--ink':'#15110D','--ink-2':'#1E1813','--bone':'#EAE3D6','--bone-2':'#E0D7C6','--clay':'#BB8160','--clay-d':'#9A6747','--muted':'#897E6C','--line':'rgba(21,17,13,.14)','--line-l':'rgba(234,227,214,.16)'}},
+    {id:'noir',name:'Нуар',ink:'#0E0E0E',clay:'#C6A266',v:{'--ink':'#0E0E0E','--ink-2':'#161616','--bone':'#F1ECE2','--bone-2':'#E6DFD1','--clay':'#C6A266','--clay-d':'#A9863F','--muted':'#8A8478','--line':'rgba(14,14,14,.14)','--line-l':'rgba(241,236,226,.16)'}},
+    {id:'bordeaux',name:'Бордо',ink:'#1E0E16',clay:'#C79A6E',v:{'--ink':'#1E0E16','--ink-2':'#2A1420','--bone':'#F5E6DC','--bone-2':'#ECD7CB','--clay':'#C79A6E','--clay-d':'#A6764A','--muted':'#9A7E84','--line':'rgba(30,14,22,.14)','--line-l':'rgba(245,230,220,.16)'}},
+    {id:'slate',name:'Слейт',ink:'#11161B',clay:'#7F99A8',v:{'--ink':'#11161B','--ink-2':'#19212A','--bone':'#E7E8E3','--bone-2':'#D7DAD3','--clay':'#7F99A8','--clay-d':'#5E7C8E','--muted':'#7E8A8C','--line':'rgba(17,22,27,.14)','--line-l':'rgba(231,232,227,.16)'}},
+  ];
+  const fc=document.getElementById('dzFonts'),pc=document.getElementById('dzPals');
+  function applyFont(f){root.setProperty('--fd',f.fd);root.setProperty('--fs',f.fs);localStorage.setItem('joli-font',f.id);
+    [...fc.children].forEach(b=>b.classList.toggle('on',b.dataset.id===f.id))}
+  function applyPal(p){for(const k in p.v)root.setProperty(k,p.v[k]);localStorage.setItem('joli-pal',p.id);
+    [...pc.children].forEach(b=>b.classList.toggle('on',b.dataset.id===p.id))}
+  FONTS.forEach(f=>{const b=document.createElement('button');b.className='dz-font';b.dataset.id=f.id;
+    b.innerHTML=`<b style="font-family:${f.disp}">Аа — Joli</b><small>${f.pair}</small>`;
+    b.onclick=()=>applyFont(f);fc.appendChild(b)});
+  PALS.forEach(p=>{const b=document.createElement('button');b.className='dz-pal';b.dataset.id=p.id;
+    b.innerHTML=`<i style="background:${p.ink}"></i><i style="background:${p.clay}"></i><span style="background:${p.ink}">${p.name}</span>`;
+    b.onclick=()=>applyPal(p);pc.appendChild(b)});
+  // restore
+  const sf=FONTS.find(f=>f.id===localStorage.getItem('joli-font'))||FONTS[0];applyFont(sf);
+  const sp=PALS.find(p=>p.id===localStorage.getItem('joli-pal'))||PALS[0];applyPal(sp);
+  // toggle panel
+  const btn=document.getElementById('dzBtn'),panel=document.getElementById('dzPanel');
+  let seen=localStorage.getItem('joli-dz-seen');if(seen)btn.classList.remove('dz-pulse');
+  btn.onclick=()=>{panel.classList.toggle('open');btn.classList.remove('dz-pulse');localStorage.setItem('joli-dz-seen','1')};
+  document.getElementById('dzClose').onclick=()=>panel.classList.remove('open');
+  document.addEventListener('click',e=>{if(!e.target.closest('.dz'))panel.classList.remove('open')});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.vercel
+img/products/NEW/
+.DS_Store
+Thumbs.db
+*.log
+BANANA.md
+PROMPTS.md
