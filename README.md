@@ -4,7 +4,7 @@ A studio-grade landing page concept for a handmade-lingerie brand. Built from sc
 **self-contained single file** — no framework, no build step, no dependencies. Open `index.html`
 and it runs.
 
-🔗 **Live demo:** https://YOUR-USERNAME.github.io/joli-concept/
+🔗 **Live demo:** https://gonchasobaka.github.io/joli-concept/
 🎨 **Other directions:** [`concepts.html`](concepts.html) — three alternate art directions (Editorial / Boudoir / Quiet Luxury)
 
 > Concept / spec work. Created as a design-and-build exercise for a boutique lingerie label.
@@ -66,8 +66,8 @@ img/og-card.jpg → social share card (1200×630)
 ## Deploy (GitHub Pages)
 
 Settings → Pages → Source: **Deploy from a branch** → `main` / root. Live at
-`https://YOUR-USERNAME.github.io/joli-concept/` within a minute.
+`https://gonchasobaka.github.io/joli-concept/` within a minute.
 
 ---
 
-*Designed & built by [YOUR-USERNAME](https://github.com/YOUR-USERNAME).*
+*Designed & built by [gonchasobaka](https://github.com/gonchasobaka).*
